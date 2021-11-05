@@ -138,13 +138,13 @@ function imgChang() {
 
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundImage = "url('img/earth-11595.jpg')";
+        document.body.style.backgroundImage = "url('earth-11595.jpg')";
 
     }
     else if (curntdt.getHours() >= 07 && curntdt.getHours() <= 19) {
         document.body.style.backgroundSize = "cover";
         document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundImage = "url('img/Africa-3d-1.jpg')";
+        document.body.style.backgroundImage = "url('Africa-3d-1.jpg')";
     }
 }
 imgChang()
