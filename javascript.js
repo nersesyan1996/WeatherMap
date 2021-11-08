@@ -27,14 +27,15 @@ function secton_prnt(arr, array) {
 
     openbtn.addEventListener("click", () => {
 
+        
         iconInBtn.classList.toggle("fa-sort-up")
         section.classList.toggle("mystyle");
         section2.classList.toggle("toggleTemp")
 
-        document.querySelector(".section2").style.borderBottom = "2px solid white"
+
 
         section2.innerHTML = `
-        <div class="inform"><h3>Time zone ${arr.timezone}</h3></div>
+        <div class="inform"><h3>Time zone ${array.timezone}</h3></div>
 		<div class="inform"><h3>Pressure ${Math.floor(pressure * 0.750062)} mmHg</h3></div>
 		<div class="inform"><h2>Humidity  ${array.current.humidity}  %</h2></div>
 	    `
@@ -88,10 +89,13 @@ function secton_prnt(arr, array) {
 async function fetch_fn(inp) {
 
     const result_data = [];
+
     const requestURL = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inp}&appid=${ip_key}& units=metric`)
+  
     const req_url_for_lat_lon = await requestURL.json()
 
     let requestURL2 = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${req_url_for_lat_lon.coord.lat}&lon=${req_url_for_lat_lon.coord.lon}&exclude=hourly&appid=${ip_key}& units=metric`)
+    
     let req_url2 = await requestURL2.json()
 
     result_data.push(req_url2)
@@ -136,20 +140,20 @@ function imgChang() {
 
     if (curntdt.getHours() >= 20 && curntdt.getHours() <= 24 || curntdt.getHours() >= 00 && curntdt.getHours() <= 06) {
 
-        document.body.style.backgroundRepeat = "no-repeat";
+        // document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundImage = "url('earth-11595.jpg')";
+        document.body.style.backgroundImage = "url('img/earth-11595.jpg')";
 
     }
     else if (curntdt.getHours() >= 07 && curntdt.getHours() <= 19) {
-        document.body.style.backgroundSize = "cover";
-        document.body.style.backgroundRepeat = "no-repeat";
-        document.body.style.backgroundImage = "url('Africa-3d-1.jpg')";
+         document.body.style.backgroundSize = "cover";
+        // document.body.style.backgroundRepeat = "no-repeat";
+        document.body.style.backgroundImage = "url('img/Africa-3d-1.jpg')";
     }
 }
 imgChang()
 
-let body = document.querySelector("body").addEventListener("onload", setFocus());
+document.querySelector("body").addEventListener("onload", setFocus);
 
 function setFocus() {
     document.getElementById("name").focus();
